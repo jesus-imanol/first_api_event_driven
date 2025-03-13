@@ -1,13 +1,14 @@
 package main
 
 import (
+	"apiInvitation/src/match/infaestructure/configMatch"
 	"apiInvitation/src/users/infraestructure/config"
-	
+	"log"
+	"time"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
-	"log"
-	"time"
 )
 
 func main() {
@@ -29,6 +30,8 @@ func main() {
 	}))
 
 	config.InitUsers(r)
+	configMatch.InitMatch(r)
+	
 
 	if err := r.Run(":3000"); err != nil {
 		panic(err)

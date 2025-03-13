@@ -144,9 +144,11 @@ func (mysql *MySQL) GetById(id int32) (*entities.User, error) {
     }
     defer rows.Close()
 	var user entities.User
+	var createdAt string
+	var updatedAt string
 	var deleted bool
 	for rows.Next() {
-		err := rows.Scan(&user.Id, &user.FullName, &user.Email, &user.PasswordHash,&user.Gender,&user.MatchPreference,&user.City,&user.State,&user.Interests,&user.StatusMessage, &user.ProfilePicture, &deleted)
+		err := rows.Scan(&user.Id, &user.FullName, &user.Email, &user.PasswordHash,&user.Gender,&user.MatchPreference,&user.City,&user.State,&user.Interests,&user.StatusMessage, &user.ProfilePicture, &createdAt, &updatedAt ,&deleted)
         if err!= nil {
             fmt.Println(err)
             return nil, err

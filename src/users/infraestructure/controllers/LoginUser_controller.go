@@ -39,17 +39,17 @@ func (luc *LoginUserController) LoginUser(g *gin.Context) {
     response := gin.H{
         "data": gin.H{
             "type": "users",
-            "id":   user.Id,
+            "id":   foundUser.Id,
             "attributes": gin.H{
-                "full_name":     user.FullName,
-                "profile_picture":    user.ProfilePicture,
-                "gender":     user.Gender,
-                "city":     user.State,
-                "status_message" : user.StatusMessage,
-                "match_preference": user.MatchPreference,	
-                "interests": user.Interests,
-                "email": user.Email,
-                "state": user.State,
+                "full_name":     foundUser.FullName,
+                "profile_picture":    foundUser.ProfilePicture,
+                "gender":     foundUser.Gender,
+                "city":     foundUser.State,
+                "status_message" : foundUser.StatusMessage,
+                "match_preference": foundUser.MatchPreference,	
+                "interests": foundUser.Interests,
+                "email": foundUser.Email,
+                "state": foundUser.State,
             },
         },
     }

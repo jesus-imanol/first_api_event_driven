@@ -28,11 +28,8 @@ func (lu *LoginUserUseCase) Execute(email string, passwordHash string) (*entitie
 
     for _, user := range users {
         if user.Email == email {
-            fmt.Println("password en bd:", user.PasswordHash)
-            fmt.Println("password del request + secret:", passwordWithKey)
             err := bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(passwordWithKey))
             if err != nil {
-                fmt.Println("Error al comparar credenciales:", err)
                 return nil, errors.New("credenciales invalidas")
             }
             fmt.Println(user.City)
